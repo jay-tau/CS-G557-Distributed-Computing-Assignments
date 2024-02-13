@@ -40,13 +40,13 @@ def split_file(filename, n):
 if __name__ == "__main__":
     # Get the filename and number of files from the user
     # filename = input("Enter the filename: ")
-    filename = os.path.join("data", "mini_master.txt")
-    # n = int(input("Enter the number of files to split into: "))
+    filename = os.path.join("data", "master_file.txt")
+    n_chunks = int(input("Enter the number of files to split into: "))
 
     # Split the file
-    for n_chunks in (2, 4, 8, 16, 32):
-        print(f"{n_chunks}:", end="\n")
-        split_file(filename, n_chunks)
+    # for n_chunks in (2, 4, 8, 16, 32):
+    print(f"{n_chunks}:", end="\n")
+    split_file(filename, n_chunks)
 
     # print(f"File '{filename}' successfully split into {n} files.")
     print("DONE")
