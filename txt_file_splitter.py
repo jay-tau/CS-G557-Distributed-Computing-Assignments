@@ -1,5 +1,6 @@
-from tqdm import tqdm
 import os
+
+from tqdm import tqdm
 
 
 def split_file(filename, n):
@@ -32,17 +33,20 @@ def split_file(filename, n):
             file_index = i // lines_per_file
 
             # Open the output file (create if it doesn't exist)
-            with open(f"{filename}_{n}_{file_index}.txt", "a") as output_file:
+            with open(f"{filename[:-4]}_{n}_{file_index}.txt", "a") as output_file:
                 output_file.write(line)
 
 
 if __name__ == "__main__":
     # Get the filename and number of files from the user
     # filename = input("Enter the filename: ")
-    filename = os.path.join("data", "master_file.txt")
-    n = int(input("Enter the number of files to split into: "))
+    filename = os.path.join("data", "mini_master.txt")
+    # n = int(input("Enter the number of files to split into: "))
 
     # Split the file
-    split_file(filename, n)
+    for n_chunks in (2, 4, 8, 16, 32):
+        print(f"{n_chunks}:", end="\n")
+        split_file(filename, n_chunks)
 
-    print(f"File '{filename}' successfully split into {n} files.")
+    # print(f"File '{filename}' successfully split into {n} files.")
+    print("DONE")
