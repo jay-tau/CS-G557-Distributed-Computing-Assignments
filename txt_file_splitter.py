@@ -16,7 +16,7 @@ def split_file(filename, n):
     # Read the total number of lines in the file
     with open(filename, "r") as f:
         total_lines = sum(1 for _ in f)
-
+wwwww
     # Check if the number of lines is divisible by n
     if total_lines % n != 0:
         raise ValueError("Number of lines is not divisible by n")
