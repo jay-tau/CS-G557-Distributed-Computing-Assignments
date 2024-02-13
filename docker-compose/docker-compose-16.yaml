@@ -1,0 +1,97 @@
+services:
+  searcher0:
+      image: searcher-worker
+      ports:
+        - 8000:80
+      volumes:
+        - ./data:/code/data
+  searcher1:
+      image: searcher-worker
+      ports:
+        - 8001:80
+      volumes:
+        - ./data:/code/data
+  searcher2:
+      image: searcher-worker
+      ports:
+        - 8002:80
+      volumes:
+        - ./data:/code/data
+  searcher3:
+      image: searcher-worker
+      ports:
+        - 8003:80
+      volumes:
+        - ./data:/code/data
+  searcher4:
+      image: searcher-worker
+      ports:
+        - 8004:80
+      volumes:
+        - ./data:/code/data
+  searcher5:
+      image: searcher-worker
+      ports:
+        - 8005:80
+      volumes:
+        - ./data:/code/data
+  searcher6:
+      image: searcher-worker
+      ports:
+        - 8006:80
+      volumes:
+        - ./data:/code/data
+  searcher7:
+      image: searcher-worker
+      ports:
+        - 8007:80
+      volumes:
+        - ./data:/code/data
+  searcher8:
+      image: searcher-worker
+      ports:
+        - 8008:80
+      volumes:
+        - ./data:/code/data
+  searcher9:
+      image: searcher-worker
+      ports:
+        - 8009:80
+      volumes:
+        - ./data:/code/data
+  searcher10:
+      image: searcher-worker
+      ports:
+        - 80010:80
+      volumes:
+        - ./data:/code/data
+  searcher11:
+      image: searcher-worker
+      ports:
+        - 80011:80
+      volumes:
+        - ./data:/code/data
+  searcher12:
+      image: searcher-worker
+      ports:
+        - 80012:80
+      volumes:
+        - ./data:/code/data
+  searcher13:
+      image: searcher-worker
+      ports:
+        - 80013:80
+      volumes:
+        - ./data:/code/data
+  searcher14:
+      image: searcher-worker
+      ports:
+        - 80014:80
+      volumes:
+        - ./data:/code/data
+  searcher15:
+      image: searcher-worker
+      ports:
+        - 80015:80
+      volumes:
+        - ./data:/code/data
