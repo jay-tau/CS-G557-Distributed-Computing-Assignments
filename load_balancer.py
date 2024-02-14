@@ -1,5 +1,6 @@
 import csv
 import os
+import sys
 import time
 
 import requests
@@ -74,7 +75,9 @@ x = 100
 # x = 776703000000000000
 # x = 123456789
 # n_chunks = int(input("n_chunks = "))
-n_chunks = 2
+# n_chunks = 2
+n_chunks = os.environ.get("NUM_CHUNKS")
+print(f"n_chunks = {n_chunks}")
 
 response_data = [("n_chunks", "x", "pi_x", "response_time")]
 
@@ -88,7 +91,7 @@ def make_request(x: int, n_chunks: int):
             try:
                 start_time = time.time()
                 response = requests.get(
-                    f"http://localhost:800{chunk}/pi_fn/{x}?num_chunks={n_chunks}&chunk_index={chunk}"
+                    f"http://searcher{chunk}:80/pi_fn/{x}?num_chunks={n_chunks}&chunk_index={chunk}"
                 )
                 end_time = time.time()
             except requests.exceptions.RequestException as e:
@@ -105,10 +108,15 @@ def make_request(x: int, n_chunks: int):
                 )
             except TypeError:
                 response_data.append((n_chunks, x, -1, response_time))
-            print(response_time)
+            print(
+                f"x = {x}, pi_x = {response_json['pi_x']}, response_time = {response_time}"
+            )
 
 
 if __name__ == "__main__":
+    print("Waiting for searchers to start...")
+    time.sleep(5)
+    print("Searchers started\n")
     with open(os.path.join("data", "random_integers.txt")) as f:
         for x in f:
             x = int(x)
