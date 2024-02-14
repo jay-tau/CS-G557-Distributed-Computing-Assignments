@@ -77,7 +77,7 @@ x = 100
 # x = 123456789
 # n_chunks = int(input("n_chunks = "))
 # n_chunks = 2
-n_chunks = os.environ.get("NUM_CHUNKS")
+n_chunks = int(os.environ.get("NUM_CHUNKS"))
 print(f"n_chunks = {n_chunks}")
 
 response_data = [("n_chunks", "x", "pi_x", "response_time")]
