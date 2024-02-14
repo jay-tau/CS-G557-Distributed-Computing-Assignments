@@ -1,9 +1,10 @@
 import os
 import random
 import sys
+from tqdm import tqdm
 
 # Generate 1000 random integers
-random_integers = [random.randint(1, 100) for _ in range(100)]
+random_integers = [random.randint(1, sys.maxsize) for _ in tqdm(range(1000))]
 
 # Save the random integers to a file named "random_integers.txt"
 with open(os.path.join("data", "random_integers.txt"), "w") as f:

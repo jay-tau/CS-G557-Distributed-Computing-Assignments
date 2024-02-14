@@ -6,6 +6,7 @@ import time
 import requests
 
 CHUNK_RANGES = {
+    "master_file_1_0.txt": (1, 100000000000000000000000000),
     "master_file_2_0.txt": (1, 45216000000000),
     "master_file_2_1.txt": (45216000000000, 100000000000000000000000000),
     "master_file_4_0.txt": (1, 383026000000),
@@ -84,6 +85,7 @@ response_data = [("n_chunks", "x", "pi_x", "response_time")]
 
 def make_request(x: int, n_chunks: int):
     for chunk in range(n_chunks):
+        print(f"Chunk {chunk}")
         file_name = f"master_file_{n_chunks}_{chunk}.txt"
         file_path = os.path.join("data", file_name)
         chunk_range = CHUNK_RANGES[file_name]
@@ -121,7 +123,7 @@ if __name__ == "__main__":
     with open(os.path.join("data", "random_integers.txt")) as f:
         for x in f:
             x = int(x)
-            make_request(x, 2)
+            make_request(x, n_chunks)
 
     with open(
         os.path.join("data", f"response_data_{n_chunks}.csv"), "w", newline=""
