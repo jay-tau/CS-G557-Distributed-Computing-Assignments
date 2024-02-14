@@ -41,7 +41,7 @@ def search(x: int, num_chunks: int = 1, chunk_index: int = 0):
                 continue
 
             try:
-                x_val = float(split_line[0])
+                x_val = int(split_line[0])
                 pi_val = int(split_line[1])
             except ValueError:
                 continue
