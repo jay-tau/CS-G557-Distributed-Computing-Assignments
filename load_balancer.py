@@ -106,11 +106,12 @@ def make_request(x: int, n_chunks: int):
                 response_data.append(
                     (n_chunks, response_json["x"], response_json["pi_x"], response_time)
                 )
+                print(
+                    f"x = {x}, pi_x = {response_json['pi_x']}, response_time = {response_time}"
+                )
             except TypeError:
                 response_data.append((n_chunks, x, -1, response_time))
-            print(
-                f"x = {x}, pi_x = {response_json['pi_x']}, response_time = {response_time}"
-            )
+                print(f"x = {x}, pi_x = -1, response_time = {response_time}")
 
 
 if __name__ == "__main__":
