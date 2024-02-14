@@ -97,9 +97,13 @@ def make_request(x: int, n_chunks: int):
                 end_time = time.time()
             except requests.exceptions.RequestException as e:
                 # print(f"Error: {e}")
+                print("error 1")
+                sys.exit(1)
 
             if response.status_code != 200:  # TODO
                 # print("ERROR")
+                print("error 2")
+                sys.exit(2)
 
             response_time = end_time - start_time
             try:
@@ -112,6 +116,8 @@ def make_request(x: int, n_chunks: int):
                 # )
             except TypeError:
                 response_data.append((n_chunks, x, -1, response_time))
+                print("error 3")
+                sys.exit(3)
                 # print(f"x = {x}, pi_x = -1, response_time = {response_time}")
 
 
