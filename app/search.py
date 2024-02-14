@@ -46,7 +46,7 @@ def search(x: int, num_chunks: int = 1, chunk_index: int = 0):
             except ValueError:
                 continue
 
-            if x == x_val:
+            if x_val >= x:
                 return {"x": x_val, "pi_x": pi_val}
 
     return -1
