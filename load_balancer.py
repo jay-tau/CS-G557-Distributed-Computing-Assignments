@@ -122,7 +122,9 @@ if __name__ == "__main__":
             x = int(x)
             make_request(x, 2)
 
-    with open(os.path.join("data", "response_data.csv"), "w", newline="") as f:
+    with open(
+        os.path.join("data", f"response_data_{n_chunks}.csv"), "w", newline=""
+    ) as f:
         writer = csv.writer(f)
         writer.writerows(response_data)
 
