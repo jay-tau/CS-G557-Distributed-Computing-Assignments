@@ -1,4 +1,13 @@
 services:
+  load-balancer:
+    image: load-balancer
+    volumes:
+      - ../data:/code/data
+    environment:
+      - NUM_CHUNKS=2
+    depends_on:
+      - searcher0
+      - searcher1
   searcher0:
     image: searcher-worker
     ports:
