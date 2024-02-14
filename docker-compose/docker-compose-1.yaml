@@ -1,7 +1,7 @@
 services:
   searcher0:
-      image: searcher-worker
-      ports:
-        - 8000:80
-      volumes:
-        - ./data:/code/data
+    image: searcher-worker
+    ports:
+      - 8000:80
+    volumes:
+      - ../data:/code/data
