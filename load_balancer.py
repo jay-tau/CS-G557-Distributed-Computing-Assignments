@@ -85,7 +85,6 @@ response_data = [("n_chunks", "x", "pi_x", "response_time")]
 
 def make_request(x: int, n_chunks: int):
     for chunk in range(n_chunks):
-        print(f"Chunk {chunk}")
         file_name = f"master_file_{n_chunks}_{chunk}.txt"
         file_path = os.path.join("data", file_name)
         chunk_range = CHUNK_RANGES[file_name]
@@ -97,10 +96,10 @@ def make_request(x: int, n_chunks: int):
                 )
                 end_time = time.time()
             except requests.exceptions.RequestException as e:
-                print(f"Error: {e}")
+                # print(f"Error: {e}")
 
             if response.status_code != 200:  # TODO
-                print("ERROR")
+                # print("ERROR")
 
             response_time = end_time - start_time
             try:
@@ -108,12 +107,12 @@ def make_request(x: int, n_chunks: int):
                 response_data.append(
                     (n_chunks, response_json["x"], response_json["pi_x"], response_time)
                 )
-                print(
-                    f"x = {x}, pi_x = {response_json['pi_x']}, response_time = {response_time}"
-                )
+                # print(
+                #     f"x = {x}, pi_x = {response_json['pi_x']}, response_time = {response_time}"
+                # )
             except TypeError:
                 response_data.append((n_chunks, x, -1, response_time))
-                print(f"x = {x}, pi_x = -1, response_time = {response_time}")
+                # print(f"x = {x}, pi_x = -1, response_time = {response_time}")
 
 
 if __name__ == "__main__":
