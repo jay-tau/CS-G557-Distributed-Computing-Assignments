@@ -1,4 +1,10 @@
-chunk_ranges = {
+import csv
+import os
+import time
+
+import requests
+
+CHUNK_RANGES = {
     "master_file_2_0.txt": (1, 45216000000000),
     "master_file_2_1.txt": (45216000000000, 100000000000000000000000000),
     "master_file_4_0.txt": (1, 383026000000),
@@ -62,3 +68,54 @@ chunk_ranges = {
     "master_file_32_30.txt": (543060000000000000, 776701000000000000),
     "master_file_32_31.txt": (776702000000000000, 100000000000000000000000000),
 }
+
+# x = int(input("x = "))
+x = 100
+# x = 776703000000000000
+# x = 123456789
+# n_chunks = int(input("n_chunks = "))
+n_chunks = 2
+
+response_data = [("n_chunks", "x", "pi_x", "response_time")]
+
+
+def make_request(x: int, n_chunks: int):
+    for chunk in range(n_chunks):
+        file_name = f"master_file_{n_chunks}_{chunk}.txt"
+        file_path = os.path.join("data", file_name)
+        chunk_range = CHUNK_RANGES[file_name]
+        if chunk_range[0] <= x <= chunk_range[1]:
+            try:
+                start_time = time.time()
+                response = requests.get(
+                    f"http://localhost:800{chunk}/pi_fn/{x}?num_chunks={n_chunks}&chunk_index={chunk}"
+                )
+                end_time = time.time()
+            except requests.exceptions.RequestException as e:
+                print(f"Error: {e}")
+
+            if response.status_code != 200:  # TODO
+                print("ERROR")
+
+            response_time = end_time - start_time
+            response_json = response.json()
+            try:
+                response_data.append(
+                    (n_chunks, response_json["x"], response_json["pi_x"], response_time)
+                )
+            except TypeError:
+                response_data.append((n_chunks, x, -1, response_time))
+            print(response_time)
+
+
+if __name__ == "__main__":
+    with open(os.path.join("data", "random_integers.txt")) as f:
+        for x in f:
+            x = int(x)
+            make_request(x, 2)
+
+    with open(os.path.join("data", "response_data.csv"), "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(response_data)
+
+    print("response_data.csv written")
