@@ -103,8 +103,8 @@ def make_request(x: int, n_chunks: int):
                 print("ERROR")
 
             response_time = end_time - start_time
-            response_json = response.json()
             try:
+                response_json = response.json()
                 response_data.append(
                     (n_chunks, response_json["x"], response_json["pi_x"], response_time)
                 )
