@@ -58,3 +58,14 @@ plt.title("Total Response Time vs Cluster Size")
 plt.xlabel("Cluster Size")
 plt.ylabel("Total Response Time (s)")
 plt.savefig("total_response_time.png")
+
+# Make a table with total response times and average response time as colums and rows as cluster size
+# Save the table as a csv file
+table = pd.DataFrame(
+    {
+        "Cluster Size": x_data,
+        "Average Response Time (ms)": average_response_times,
+        "Total Response Time (s)": total_response_times,
+    }
+)
+table.to_csv("response_time_table.csv", index=False)
