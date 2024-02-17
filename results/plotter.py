@@ -1,3 +1,13 @@
+"""
+This script plots the average response time and total response time for each cluster size.
+
+and saves the plots as .png files. It also creates a table with the average response time
+and total response time for each cluster size and saves it as a .csv file.
+
+Usage:
+    python plotter.py
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
