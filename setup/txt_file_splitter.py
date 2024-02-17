@@ -42,7 +42,7 @@ def split_file(file_name: str, n: int) -> None:
     """
 
     # Read the total number of lines in the file
-    with open(file_name, "r", encoding="utf-8") as f:
+    with open(file_name, encoding="utf-8") as f:
         total_lines = sum(1 for _ in f)
 
     # Check if the number of lines is divisible by n
@@ -53,7 +53,7 @@ def split_file(file_name: str, n: int) -> None:
     lines_per_file = total_lines // n
 
     # Open the original file and create output files
-    with open(file_name, "r", encoding="utf-8") as f:
+    with open(file_name, encoding="utf-8") as f:
         for i, line in tqdm(enumerate(f)):
             # Calculate the index of the output file
             file_index = i // lines_per_file

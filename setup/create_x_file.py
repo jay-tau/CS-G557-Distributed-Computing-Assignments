@@ -1,6 +1,4 @@
-"""
-Generates a file with random integers and saves them to a file called random_integers.txt.
-"""
+"""Generates a file with random integers and saves them to a file called random_integers.txt."""
 
 import os
 import random

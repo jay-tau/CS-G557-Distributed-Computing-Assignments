@@ -1,5 +1,6 @@
 """
 Used to create docker-compose file for searcher workers based on the number of workers.
+
 Creates a docker-compose file `docker-compose-{n}.yaml` where n is the number of workers.
 The docker-compose file will contain n+1 services:
   1. load-balancer
